@@ -21,8 +21,9 @@ public class User {
     private String userName;
     private String password;
     private boolean active;
-    @ElementCollection
-    private List<String> roles= new ArrayList<>();
+    @ElementCollection(targetClass = Role.class)
+    @Enumerated(EnumType.STRING)
+    private List<Role> roles= new ArrayList<>();
 
 
 }
