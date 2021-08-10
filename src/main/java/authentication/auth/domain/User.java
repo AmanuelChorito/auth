@@ -24,8 +24,10 @@ public class User {
     private boolean active;
 
 
+
     @Enumerated(EnumType.STRING)
     private Role roles;
+
 
 
 
