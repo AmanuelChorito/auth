@@ -11,18 +11,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "User")
+@Table(name = "user")
 @Data
 public class User {
     @javax.persistence.Id
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    @Column(name = "user_name")
     private String userName;
     private String password;
     private boolean active;
-    @ElementCollection
-    private List<String> roles= new ArrayList<>();
+
+    @Enumerated(EnumType.STRING)
+    private Role roles;
 
 
 }
