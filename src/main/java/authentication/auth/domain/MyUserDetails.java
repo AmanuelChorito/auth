@@ -4,8 +4,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.ElementCollection;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -15,19 +13,24 @@ public class MyUserDetails implements UserDetails {
     private String userName;
     private String password;
     private boolean active;
-    private List<GrantedAuthority>authorities;
+    private List<GrantedAuthority> authorities;
 
     public MyUserDetails(User user) {
         this.userName=user.getUserName();
         this.password=user.getPassword();
         this.active=user.isActive();
-        this.authorities=user.getRoles().stream().map((Role role) -> new SimpleGrantedAuthority(role.toString())).collect(Collectors.toList());
+
+        this.authorities=  Arrays.asList(new SimpleGrantedAuthority(user.getRoles().toString()));
+                //.map(role -> new SimpleGrantedAuthority(role.name())).collect(Collectors.toList());
+                //user.getRoles().stream().map((String role) -> new SimpleGrantedAuthority(role).collect(Collectors.toList());
+        //Arrays.stream(user.getRoles().toString())
 
 
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
+
         return authorities;
     }
 
