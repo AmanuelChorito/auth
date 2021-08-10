@@ -19,10 +19,12 @@ public class MyUserDetails implements UserDetails {
         this.userName=user.getUserName();
         this.password=user.getPassword();
         this.active=user.isActive();
+
         this.authorities=  Arrays.asList(new SimpleGrantedAuthority(user.getRoles().toString()));
                 //.map(role -> new SimpleGrantedAuthority(role.name())).collect(Collectors.toList());
                 //user.getRoles().stream().map((String role) -> new SimpleGrantedAuthority(role).collect(Collectors.toList());
         //Arrays.stream(user.getRoles().toString())
+
 
     }
 

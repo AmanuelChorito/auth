@@ -23,8 +23,10 @@ public class User {
     private String password;
     private boolean active;
 
+
     @Enumerated(EnumType.STRING)
     private Role roles;
+
 
 
 }
