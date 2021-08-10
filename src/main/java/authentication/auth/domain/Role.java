@@ -1,5 +1,5 @@
 package authentication.auth.domain;
 
 public enum Role {
-    ADMIN, USER
+    ROLE_ADMIN, ROLE_USER
 }
